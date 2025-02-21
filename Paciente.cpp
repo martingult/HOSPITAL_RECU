@@ -1,6 +1,7 @@
 #include "Paciente.h"
 #include <iostream>
 #include <fstream>
+#include <string>
 
 void Paciente::inicializarArchivo() {
     std::ofstream archivo("pacientes.txt", std::ios::app);
@@ -82,4 +83,43 @@ void Paciente::modificar() {
     std::remove("pacientes.txt");
     std::rename("temp.txt", "pacientes.txt");
     std::cout << (modificado ? "Paciente modificado.\n" : "Paciente no encontrado.\n");
+}
+void Paciente::asignarCita() {
+    std::ofstream archivo("citas.txt", std::ios::app);
+    std::string pacienteNombre, medicoNombre, fecha;
+
+    std::cout << "Nombre del paciente: ";
+    std::getline(std::cin, pacienteNombre);
+
+    std::cout << "Nombre del médico: ";
+    std::getline(std::cin, medicoNombre);
+
+    std::cout << "Fecha de la cita (DD/MM/YYYY): ";
+    std::getline(std::cin, fecha);
+
+    archivo << pacienteNombre << "," << medicoNombre << "," << fecha << "\n";
+    archivo.close();
+
+    std::cout << "Cita asignada correctamente.\n";
+}
+
+void Paciente::verCitasDelPaciente() {
+    std::ifstream archivo("citas.txt");
+    std::string nombre, linea;
+    std::cout << "Ingrese el nombre del paciente para ver sus citas: ";
+    std::getline(std::cin, nombre);
+    bool encontrado = false;
+
+    std::cout << "\n--- Citas del Paciente ---\n";
+    while (std::getline(archivo, linea)) {
+        if (linea.find(nombre) != std::string::npos) {
+            std::cout << linea << "\n";
+            encontrado = true;
+        }
+    }
+    archivo.close();
+
+    if (!encontrado) {
+        std::cout << "No hay citas registradas para este paciente.\n";
+    }
 }

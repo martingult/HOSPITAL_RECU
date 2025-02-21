@@ -50,6 +50,8 @@ void menuPaciente() {
         std::cout << "2. Buscar Paciente\n";
         std::cout << "3. Eliminar Paciente\n";
         std::cout << "4. Modificar Paciente\n";
+        std::cout << "5. Asignar Cita\n";
+        std::cout << "6. Ver Citas del Paciente\n";
         std::cout << "0. Volver\n";
         std::cout << "Seleccione una opción: ";
         std::cin >> opcion;
@@ -67,6 +69,12 @@ void menuPaciente() {
             break;
         case 4:
             Paciente::modificar();
+            break;
+        case 5:
+            Paciente::asignarCita();
+            break;
+        case 6:
+            Paciente::verCitasDelPaciente();
             break;
         case 0:
             return;

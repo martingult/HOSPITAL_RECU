@@ -9,6 +9,8 @@ public:
     static void buscar();
     static void eliminar();
     static void modificar();
+    static void asignarCita();
+    static void verCitasDelPaciente();
 };
 
 #endif
