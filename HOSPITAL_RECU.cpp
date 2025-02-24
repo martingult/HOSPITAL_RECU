@@ -1,11 +1,13 @@
 ﻿#include "Paciente.h"
 #include "Medico.h"
+#include "Informe.h"
 #include <iostream>
 #include <locale>
 
 void menuPrincipal();
 void menuPaciente();
 void menuMedico();
+void menuInformes();
 
 int main() {
     std::locale::global(std::locale(""));
@@ -21,6 +23,7 @@ void menuPrincipal() {
         std::cout << "\n--- Menú Principal ---\n";
         std::cout << "1. Paciente\n";
         std::cout << "2. Médico\n";
+        std::cout << "3. Informes\n";
         std::cout << "0. Salir\n";
         std::cout << "Seleccione una opción: ";
         std::cin >> opcion;
@@ -32,6 +35,9 @@ void menuPrincipal() {
             break;
         case 2:
             menuMedico();
+            break;
+        case 3:
+            menuInformes();
             break;
         case 0:
             std::cout << "Saliendo...\n";
@@ -109,6 +115,32 @@ void menuMedico() {
             break;
         case 4:
             Medico::modificar();
+            break;
+        case 0:
+            return;
+        default:
+            std::cout << "Opción inválida.\n";
+        }
+    } while (opcion != 0);
+}
+
+void menuInformes() {
+    int opcion;
+    do {
+        std::cout << "\n--- Menú Informes ---\n";
+        std::cout << "1. Listado de Pacientes Atendidos por Fechas\n";
+        std::cout << "2. Médicos con sus Citas\n";
+        std::cout << "0. Volver\n";
+        std::cout << "Seleccione una opción: ";
+        std::cin >> opcion;
+        std::cin.ignore();
+
+        switch (opcion) {
+        case 1:
+            Informe::listadoPacientesPorFechas();
+            break;
+        case 2:
+            Informe::medicosConSusCitas();
             break;
         case 0:
             return;

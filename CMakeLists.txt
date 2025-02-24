@@ -12,7 +12,7 @@ endif()
 project ("HOSPITAL_RECU")
 
 # Agregue un origen al ejecutable de este proyecto.
-add_executable (HOSPITAL_RECU "HOSPITAL_RECU.cpp" "HOSPITAL_RECU.h" "Paciente.h" "Paciente.cpp" "Medico.cpp" "Medico.h"  )
+add_executable (HOSPITAL_RECU "HOSPITAL_RECU.cpp" "HOSPITAL_RECU.h" "Paciente.h" "Paciente.cpp" "Medico.cpp" "Medico.h"   "Informe.h" "Informe.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET HOSPITAL_RECU PROPERTY CXX_STANDARD 20)
